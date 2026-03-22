@@ -1,0 +1,32 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+  <input type="text" formControlName="name" placeholder="Name">
+  
+  <input type="text" formControlName="category" placeholder="Category">
+  
+  <input type="number" formControlName="price" placeholder="Price">
+  
+  <label>
+    <input type="checkbox" formControlName="inStock">
+    In Stock
+  </label>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+<table *ngIf="productList.length">
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th>Stock</th>
+  </tr>
+
+  <tr *ngFor="let p of productList">
+    <td>{{ p.name }}</td>
+    <td>{{ p.category }}</td>
+    <td>{{ p.price }}</td>
+    <td>{{ p.inStock ? 'Yes' : 'No' }}</td>
+  </tr>
+</table>
