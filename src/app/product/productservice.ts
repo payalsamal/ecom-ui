@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Producti } from './producti';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { error } from 'console';
 
 @Injectable({
@@ -35,6 +35,16 @@ getProducts():any{
    
 }
 
+getProductsPage(pageNo:number,size:number):any{
+  console.log("in service pageNo:", pageNo, "size:", size); 
+  let headers = new HttpHeaders().set('X-API-Version', '3');
+  let params = new HttpParams().set("pageNo",pageNo.toString())
+  .set("size",size.toString())
+  return this.http.get<Producti[]>('http://localhost:8080/product', { headers ,params})
+  
+   
+   
+}
 
 
 }

@@ -30,3 +30,18 @@
     <td>{{ p.inStock ? 'Yes' : 'No' }}</td>
   </tr>
 </table>
+
+
+<div >
+
+  <button (click)="prevPage()" [disabled]="pageNo === 0">
+    Previous
+  </button>
+
+  <span> Page {{ pageNo + 1 }} of {{ totalPages }} </span>
+
+  <button (click)="nextPage()" [disabled]="pageNo === totalPages - 1">
+    Next
+  </button>
+
+</div>
